@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Icons from 'react-native-vector-icons/AntDesign';
 
 import {
@@ -11,7 +12,7 @@ import {
   AnimatableArrowView
 } from './styles';
 
-const MainButton = ({ text, subText, animation }) => {
+const MainButton = ({ text, subText, animation, onPress }) => {
   return (
     <AnimatableViewButton
       elevation={20}
@@ -20,7 +21,7 @@ const MainButton = ({ text, subText, animation }) => {
       useNativeDriver
       iterationCount={1}
     >
-      <Button>
+      <Button onPress={onPress}>
         <IconAndTextView>
           <Icons name="exclamationcircle" size={12} color="#fff" />
           <TextView>

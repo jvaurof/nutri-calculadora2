@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FlatList } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
+import { useNavigation } from '@react-navigation/native';
 
 import MainButton from '../../components/MainButton'
 
@@ -14,7 +15,7 @@ const userOptions = [
     id: '1',
     text: 'IMC',
     subText: 'Criança, Adulto e Idoso',
-    navigate: 'ImcOptions',
+    navigate: 'IMC',
   },
   {
     id: '2',
@@ -57,6 +58,8 @@ const userOptions = [
 const Main = () => {
   const [options] = useState(userOptions);
 
+  const navigation = useNavigation();
+
   return (
     <>
       <AnimatableTitle
@@ -78,6 +81,7 @@ const Main = () => {
               text={option.text}
               subText={option.subText}
               animation={animation}
+              onPress={() => navigation.navigate(option.navigate)}
             />)
         }}
       />
