@@ -2,10 +2,12 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 import * as Animatable from 'react-native-animatable';
 
-export const ViewButton = styled.View`
+const ViewButton = styled.View`
   border-radius: 20px;
   margin: 20px 20px 15px 20px;
 `;
+
+export const AnimatableViewButton = Animatable.createAnimatableComponent(ViewButton);
 
 export const Button = styled(RectButton)`
   background: #AB47BC;
@@ -21,10 +23,11 @@ export const Button = styled(RectButton)`
 export const IconAndTextView = styled.View`
   flex-direction: row;
   align-items: center;
-`
+`;
+
 export const TextView = styled.View`
   margin-left: 20px;
-`
+`;
 
 export const Text = styled.Text`
   color: #fff;

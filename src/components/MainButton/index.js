@@ -2,7 +2,7 @@ import React from 'react';
 import Icons from 'react-native-vector-icons/AntDesign';
 
 import {
-  ViewButton,
+  AnimatableViewButton,
   Button,
   TextView,
   Text,
@@ -11,9 +11,15 @@ import {
   AnimatableArrowView
 } from './styles';
 
-const MainButton = ({ text, subText }) => {
+const MainButton = ({ text, subText, animation }) => {
   return (
-    <ViewButton elevation={20}>
+    <AnimatableViewButton
+      elevation={20}
+      animation={animation}
+      duration={3000}
+      useNativeDriver
+      iterationCount={1}
+    >
       <Button>
         <IconAndTextView>
           <Icons name="exclamationcircle" size={12} color="#fff" />
@@ -31,7 +37,7 @@ const MainButton = ({ text, subText }) => {
           <Icons name="arrowright" size={25} color="#333" />
         </AnimatableArrowView>
       </Button>
-    </ViewButton>
+    </AnimatableViewButton>
   );
 }
 
