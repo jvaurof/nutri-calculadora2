@@ -74,6 +74,7 @@ export const Input = styled(TextInputMask).attrs({
   placeholderTextColor: '#fff'
 })`
   font-size: 25px;
+  color: #fff;
 `;
 
 const SubmitButton = styled(RectButton)`
