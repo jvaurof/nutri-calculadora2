@@ -61,6 +61,7 @@ export const IconView = styled.View`
 `;
 
 export const MeasureView = styled.View`
+  flex: 1;
   justify-content: center;
   align-items: center;
 `
@@ -75,6 +76,8 @@ export const Input = styled(TextInputMask).attrs({
 })`
   font-size: 25px;
   color: #fff;
+  width: 70%;
+  text-align: center;
 `;
 
 const SubmitButton = styled(RectButton)`

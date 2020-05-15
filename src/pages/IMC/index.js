@@ -107,6 +107,7 @@ const IMC = () => {
             value={item1}
             placeholder={'0,00'}
             onChangeText={text => { setItem1(text) }}
+            returnKeyType='next'
             ref={item1Ref}
           />
         </MeasureView>
@@ -125,6 +126,8 @@ const IMC = () => {
             value={item2}
             placeholder={'0,00'}
             onChangeText={text => setItem2(text)}
+            onSubmitEditing={handleResult}
+            returnKeyType='done'
             ref={item2Ref}
           />
         </MeasureView>
