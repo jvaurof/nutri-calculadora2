@@ -1,9 +1,12 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { Keyboard } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+import Information from '../../components/Information';
 
 import Icons from 'react-native-vector-icons/AntDesign';
 
-import formula from '../../formulas'
+import { imc } from '../../formulas';
 
 import {
   Container,
@@ -24,6 +27,17 @@ import {
 } from './styles';
 
 const IMC = () => {
+  const navigation = useNavigation();
+  const textInformation = `Peso ideal\nIMC Adulto: X\nIMC Idoso: Y`;
+
+  navigation.setOptions({
+    title: 'IMC',
+    headerShown: true,
+    headerRight: () => (
+      <Information text={textInformation} />
+    ),
+  });
+
   const [enabledCategory, setEnabledCategory] = useState({
     category1: false,
     category2: true,
@@ -44,7 +58,7 @@ const IMC = () => {
     const numberValue1 = item1Ref.current.getRawValue()
     const numberValue2 = item2Ref.current.getRawValue()
 
-    setResult(formula({ item1: numberValue1, item2: numberValue2 }, 'imc'));
+    setResult(imc(numberValue1, numberValue2));
   }, [item1, item2]);
 
   return (
