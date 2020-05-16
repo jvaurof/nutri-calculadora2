@@ -10,8 +10,9 @@ import { Container } from './styles';
 
 const IMC = () => {
   useNavigation().setOptions({
-    title: 'IMC',
     headerShown: true,
+    title: 'IMC',
+    headerTitleAlign: 'center',
     headerRight: () => (
       <Information text={`Peso ideal\nIMC Adulto: X\nIMC Idoso: Y`} />
     ),

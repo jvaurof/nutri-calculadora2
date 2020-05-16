@@ -25,18 +25,11 @@ const MainRoutes = () => (
       <MainStack.Screen
         name="Main"
         component={Main}
-        options={{
-          headerShown: false,
-        }}
       />
 
       <MainStack.Screen
         name="IMC"
         component={IMC}
-        options={{
-          title: 'IMC',
-          headerTitleAlign: 'center'
-        }}
       />
     </MainStack.Navigator>
   </>

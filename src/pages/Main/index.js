@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
 import { useNavigation } from '@react-navigation/native';
@@ -56,9 +56,13 @@ const userOptions = [
 ]
 
 const Main = () => {
-  const [options] = useState(userOptions);
-
   const navigation = useNavigation();
+
+  navigation.setOptions({
+    headerShown: false,
+  });
+
+  const [options] = useState(userOptions);
 
   return (
     <>
