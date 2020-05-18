@@ -47,8 +47,18 @@ const Main = () => {
         }}
       />
       <LineView >
-        <Svg height="1000" width="60">
-          <Line x1="56" y1="0" x2="56" y2="1000" stroke="#fff" strokeWidth="1" />
+        <Svg
+          height="1000"
+          width="60"
+        >
+          <Line
+            x1="56"
+            y1="0"
+            x2="56"
+            y2="1000"
+            stroke="#fff"
+            strokeWidth="1"
+          />
         </Svg>
       </LineView>
     </>
