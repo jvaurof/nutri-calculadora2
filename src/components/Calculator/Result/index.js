@@ -1,11 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Icons from 'react-native-vector-icons/AntDesign';
 
 import { Container, Text, SubText, IconView } from './styles';
 
-const Result = ({ result }) => {
+export default Result = () => {
+  const result = useSelector(state => state.calculator.result);
+
   return (
     <Container>
       <IconView>
@@ -15,7 +17,3 @@ const Result = ({ result }) => {
       <SubText></SubText>
     </Container>);
 }
-
-export default connect(state => ({
-  result: state.calculator.result
-}))(Result);

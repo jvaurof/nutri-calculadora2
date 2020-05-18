@@ -1,8 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Keyboard } from 'react-native';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import store from '../../../store';
 import { setImc } from '../../../store/modules/calculator/actions';
 
 import {
@@ -16,12 +15,14 @@ import {
   SubmitTextButton
 } from './styles';
 
-const Form = ({ measure1, measure2 }) => {
+export default Form = ({ measure1, measure2 }) => {
   const [item1, setItem1] = useState('0,00');
   const [item2, setItem2] = useState('0,00');
 
   const item1Ref = useRef();
   const item2Ref = useRef();
+
+  const dispatch = useDispatch();
 
   const handleResult = useCallback(() => {
     Keyboard.dismiss();
@@ -29,7 +30,7 @@ const Form = ({ measure1, measure2 }) => {
     const numberValue1 = item1Ref.current.getRawValue()
     const numberValue2 = item2Ref.current.getRawValue()
 
-    store.dispatch(setImc({
+    dispatch(setImc({
       measure1: numberValue1,
       measure2: numberValue2
     }));
@@ -93,5 +94,3 @@ const Form = ({ measure1, measure2 }) => {
     </Container>
   );
 }
-
-export default connect()(Form);
