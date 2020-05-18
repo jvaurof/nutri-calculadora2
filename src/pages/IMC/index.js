@@ -6,9 +6,6 @@ import Result from '../../components/Calculator/Result';
 import Category from '../../components/Calculator/Category';
 import Form from '../../components/Calculator/Form';
 
-import store from '../../store';
-import actions from '../../actions';
-
 import { Container } from './styles';
 
 const IMC = () => {
@@ -20,11 +17,6 @@ const IMC = () => {
       <Information text={`Peso ideal\nIMC Adulto: X\nIMC Idoso: Y`} />
     ),
   });
-
-  /*   useEffect(() => {
-      console.log(store.getState());
-      store.dispatch(actions.calculateImc('oi'));
-    }, []); */
 
   return (
     <Container>

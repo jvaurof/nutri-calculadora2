@@ -34,9 +34,7 @@ const Form = ({ measure1, measure2 }) => {
       measure2: numberValue2
     }));
 
-    //result(imc(numberValue1, numberValue2));
   }, [item1, item2]);
-
 
   return (
     <Container>
