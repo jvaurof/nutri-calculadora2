@@ -7,13 +7,15 @@ import { clearResult } from '../../../store/modules/calculator/actions';
 
 import {
   Container,
-  Text,
-  SubText,
+  ResultText,
+  Classification,
   IconView
 } from './styles';
 
 export default Result = () => {
   const result = useSelector(state => state.calculator.result);
+  const classificationColor = useSelector(state => state.calculator.classificationColor);
+  const classificationText = useSelector(state => state.calculator.classificationText)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,9 +25,9 @@ export default Result = () => {
   return (
     <Container>
       <IconView>
-        <Icons name="loading1" size={230} color="#fff" />
+        <Icons name="loading1" size={230} color={classificationColor} />
       </IconView>
-      <Text>{result}</Text>
-      <SubText></SubText>
+      <ResultText>{result}</ResultText>
+      <Classification>{classificationText}</Classification>
     </Container>);
 }

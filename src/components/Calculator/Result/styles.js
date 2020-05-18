@@ -6,12 +6,12 @@ export const Container = styled.View`
   justify-content: center;
 `;
 
-export const Text = styled.Text`
+export const ResultText = styled.Text`
   color: #fff;
   font-size: 50px;
 `;
 
-export const SubText = styled.Text`
+export const Classification = styled.Text`
   color: #fff;
   font-size: 15px;
 `;
