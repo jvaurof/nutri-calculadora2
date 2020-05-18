@@ -1,7 +1,9 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Keyboard } from 'react-native';
+import { connect } from 'react-redux';
 
-import { imc, pesoIdeal } from '../../../formulas';
+import store from '../../../store';
+import { setImc } from '../../../store/modules/calculator/actions';
 
 import {
   Container,
@@ -14,9 +16,9 @@ import {
   SubmitTextButton
 } from './styles';
 
-const Form = ({ measure1, measure2, result }) => {
-  const [item1, setItem1] = useState();
-  const [item2, setItem2] = useState();
+const Form = ({ measure1, measure2 }) => {
+  const [item1, setItem1] = useState('0,00');
+  const [item2, setItem2] = useState('0,00');
 
   const item1Ref = useRef();
   const item2Ref = useRef();
@@ -27,7 +29,12 @@ const Form = ({ measure1, measure2, result }) => {
     const numberValue1 = item1Ref.current.getRawValue()
     const numberValue2 = item2Ref.current.getRawValue()
 
-    result(imc(numberValue1, numberValue2));
+    store.dispatch(setImc({
+      measure1: numberValue1,
+      measure2: numberValue2
+    }));
+
+    //result(imc(numberValue1, numberValue2));
   }, [item1, item2]);
 
 
@@ -89,4 +96,4 @@ const Form = ({ measure1, measure2, result }) => {
   );
 }
 
-export default Form;
+export default connect()(Form);

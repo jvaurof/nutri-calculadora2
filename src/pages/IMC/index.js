@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import Information from '../../components/Information';
 import Result from '../../components/Calculator/Result';
 import Category from '../../components/Calculator/Category';
 import Form from '../../components/Calculator/Form';
+
+import store from '../../store';
+import actions from '../../actions';
 
 import { Container } from './styles';
 
@@ -18,16 +21,18 @@ const IMC = () => {
     ),
   });
 
-  const [result, setResult] = useState(0);
+  /*   useEffect(() => {
+      console.log(store.getState());
+      store.dispatch(actions.calculateImc('oi'));
+    }, []); */
 
   return (
     <Container>
-      <Result value1={result} />
+      <Result />
       <Category />
       <Form
         measure1="Peso - Kg"
         measure2="Altura - metros"
-        result={setResult}
       />
     </Container>
   );
