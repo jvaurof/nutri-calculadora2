@@ -1,12 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Icons from 'react-native-vector-icons/AntDesign';
 
-import { Container, Text, SubText, IconView } from './styles';
+import { clearResult } from '../../../store/modules/calculator/actions';
+
+import {
+  Container,
+  Text,
+  SubText,
+  IconView
+} from './styles';
 
 export default Result = () => {
   const result = useSelector(state => state.calculator.result);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearResult());
+  }, [])
 
   return (
     <Container>

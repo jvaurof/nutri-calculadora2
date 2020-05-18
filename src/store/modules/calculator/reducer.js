@@ -10,10 +10,16 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
     case ACTIONS.SET_IMC:
       const { measure1: weight, measure2: height } = measures;
       const result = imc(weight, height);
-      console.tron.log('state', state);
+
       return {
         ...state,
         result: result
+      }
+
+    case ACTIONS.CLEAR_RESULT:
+      return {
+        ...state,
+        result: 0,
       }
 
     default:

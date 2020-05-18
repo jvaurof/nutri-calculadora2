@@ -6,3 +6,9 @@ export function setImc(measures) {
     measures,
   }
 }
+
+export function clearResult() {
+  return {
+    type: ACTIONS.CLEAR_RESULT,
+  }
+}
