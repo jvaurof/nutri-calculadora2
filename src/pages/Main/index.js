@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import MainButton from '../../components/MainButton'
 
-import userOptions from './userOptions';
+import { USER_OPTIONS } from '../../constants';
 
 import {
   LineView,
@@ -19,7 +19,7 @@ const Main = () => {
     headerShown: false,
   });
 
-  const [options] = useState(userOptions);
+  const [options] = useState(USER_OPTIONS.MAIN_BUTTON);
 
   return (
     <>
