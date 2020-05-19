@@ -12,3 +12,10 @@ export function clearResult() {
     type: ACTIONS.CLEAR_RESULT,
   }
 }
+
+export function setEnabledCategory(enabledCategory) {
+  return {
+    type: ACTIONS.SET_ENABLED_CATEGORY,
+    enabledCategory,
+  }
+}

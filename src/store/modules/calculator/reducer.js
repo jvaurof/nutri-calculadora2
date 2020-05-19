@@ -6,13 +6,19 @@ const INITIAL_STATE = {
   result: 0,
   classificationColor: '#fff',
   classificationText: '',
+  enabledCategory: {
+    category1: false,
+    category2: true,
+    category3: false,
+  }
 };
 
 export default calculatorReducer = (state = INITIAL_STATE, actions) => {
-  const { measures, type } = actions;
+  const { type } = actions;
 
   switch (type) {
     case ACTIONS.SET_IMC:
+      const { measures } = actions;
       const { measure1: weight, measure2: height } = measures;
       const result = imc(weight, height);
 
@@ -54,6 +60,13 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
         result: 0,
         classificationColor: '#fff',
         classificationText: '',
+      }
+
+    case ACTIONS.SET_ENABLED_CATEGORY:
+      const { enabledCategory } = actions;
+      return {
+        ...state,
+        enabledCategory,
       }
 
     default:
