@@ -26,7 +26,7 @@ const MainButton = ({ text, subText, animation, onPress }) => {
           <Icons name="exclamationcircle" size={12} color="#fff" />
           <TextView>
             <Text>{text}</Text>
-            <SubText>{subText}</SubText>
+            {subText ? <SubText>{subText}</SubText> : null}
           </TextView>
         </IconAndTextView>
         <AnimatableArrowView
