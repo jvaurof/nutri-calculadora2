@@ -9,7 +9,7 @@ export default USER_OPTIONS = {
     {
       id: '2',
       text: 'Peso Ideal',
-      subText: 'Criança, Adulto e Idoso',
+      subText: '',
       navigate: 'PesoIdeal',
     },
     {

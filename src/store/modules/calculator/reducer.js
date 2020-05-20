@@ -81,6 +81,6 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
       }
 
     default:
-      return state
+      return state;
   }
 };

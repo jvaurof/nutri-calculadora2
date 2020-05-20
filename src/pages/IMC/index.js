@@ -21,7 +21,11 @@ const IMC = () => {
   return (
     <Container>
       <Result />
-      <Category />
+      <Category
+        category1="Criança"
+        category2="Adulto"
+        category3="Idoso"
+      />
       <Form
         measure1="Peso - Kg"
         measure2="Altura - metros"

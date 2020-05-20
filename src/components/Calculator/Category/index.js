@@ -5,7 +5,7 @@ import { setEnabledCategory } from '../../../store/modules/calculator/actions';
 
 import { Container, Button, Text } from './styles';
 
-const Category = () => {
+const Category = ({ category1, category2, category3 }) => {
   const enabledCategory = useSelector(state => state.calculator.enabledCategory);
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const Category = () => {
           category3: false,
         })}
       >
-        <Text>Criança</Text>
+        <Text>{category1}</Text>
       </Button>
 
       <Button
@@ -34,7 +34,7 @@ const Category = () => {
           category3: false,
         })}
       >
-        <Text>Adulto</Text>
+        <Text>{category2}</Text>
       </Button>
 
       <Button
@@ -45,7 +45,7 @@ const Category = () => {
           category3: true,
         })}
       >
-        <Text>Idoso</Text>
+        <Text>{category3}</Text>
       </Button>
     </Container>
   );
