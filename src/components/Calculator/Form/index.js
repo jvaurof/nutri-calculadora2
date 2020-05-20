@@ -2,7 +2,8 @@ import React, { useState, useRef, useCallback } from 'react';
 import { Keyboard } from 'react-native';
 import { useDispatch } from 'react-redux';
 
-import { setImc } from '../../../store/modules/calculator/actions';
+import { setImc, setPesoIdeal } from '../../../store/modules/calculator/actions';
+import { CALCULATOR_TYPES } from '../../../constants';
 
 import {
   Container,
@@ -15,7 +16,7 @@ import {
   SubmitTextButton
 } from './styles';
 
-export default Form = ({ measure1, measure2 }) => {
+export default Form = ({ measure1, measure2, type }) => {
   const [item1, setItem1] = useState('0,00');
   const [item2, setItem2] = useState('0,00');
 
@@ -27,13 +28,23 @@ export default Form = ({ measure1, measure2 }) => {
   const handleResult = useCallback(() => {
     Keyboard.dismiss();
 
-    const numberValue1 = item1Ref.current.getRawValue()
-    const numberValue2 = item2Ref.current.getRawValue()
+    const numberValue1 = item1Ref.current.getRawValue();
+    const numberValue2 = item2Ref.current.getRawValue();
 
-    dispatch(setImc({
-      measure1: numberValue1,
-      measure2: numberValue2
-    }));
+    const measures = {
+      item1: numberValue1,
+      item2: numberValue2,
+    };
+
+    switch (type) {
+      case CALCULATOR_TYPES.IMC:
+        dispatch(setImc(measures));
+        break
+
+      case CALCULATOR_TYPES.PESO_IDEAL:
+        dispatch(setPesoIdeal(measures));
+        break
+    }
 
   }, [item1, item2]);
 
@@ -52,7 +63,6 @@ export default Form = ({ measure1, measure2 }) => {
               suffixUnit: ''
             }}
             value={item1}
-            placeholder={'0,00'}
             onChangeText={text => { setItem1(text) }}
             returnKeyType='next'
             ref={item1Ref}
@@ -71,7 +81,6 @@ export default Form = ({ measure1, measure2 }) => {
               suffixUnit: ''
             }}
             value={item2}
-            placeholder={'0,00'}
             onChangeText={text => setItem2(text)}
             onSubmitEditing={handleResult}
             returnKeyType='done'

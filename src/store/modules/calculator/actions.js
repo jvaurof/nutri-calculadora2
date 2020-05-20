@@ -19,3 +19,10 @@ export function setEnabledCategory(enabledCategory) {
     enabledCategory,
   }
 }
+
+export function setPesoIdeal(measures) {
+  return {
+    type: ACTIONS.SET_PESO_IDEAL,
+    measures,
+  }
+}

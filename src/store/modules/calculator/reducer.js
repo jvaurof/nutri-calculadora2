@@ -1,6 +1,6 @@
 import { ACTIONS } from '../../../constants';
 import { CLASSIFICATION_COLOR, CLASSIFICATION_TEXT } from '../../../constants'
-import { imc } from '../../../formulas';
+import { imc, pesoIdeal } from '../../../formulas';
 
 const INITIAL_STATE = {
   result: 0,
@@ -14,13 +14,12 @@ const INITIAL_STATE = {
 };
 
 export default calculatorReducer = (state = INITIAL_STATE, actions) => {
-  const { type } = actions;
+  const { type, measures, enabledCategory } = actions;
+  let result;
 
   switch (type) {
     case ACTIONS.SET_IMC:
-      const { measures } = actions;
-      const { measure1: weight, measure2: height } = measures;
-      const result = imc(weight, height);
+      result = imc(measures);
 
       if (result < 16) {
         classificationColor = CLASSIFICATION_COLOR.SERIOUS;
@@ -60,13 +59,25 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
         result: 0,
         classificationColor: '#fff',
         classificationText: '',
+        enabledCategory: {
+          category1: false,
+          category2: true,
+          category3: false,
+        }
       }
 
     case ACTIONS.SET_ENABLED_CATEGORY:
-      const { enabledCategory } = actions;
       return {
         ...state,
         enabledCategory,
+      }
+
+    case ACTIONS.SET_PESO_IDEAL:
+      result = pesoIdeal(measures);
+
+      return {
+        ...state,
+        result
       }
 
     default:
