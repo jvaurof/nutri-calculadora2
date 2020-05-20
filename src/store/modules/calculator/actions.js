@@ -26,3 +26,10 @@ export function setPesoIdeal(measures) {
     measures,
   }
 }
+
+export function setRcq(measures) {
+  return {
+    type: ACTIONS.SET_RCQ,
+    measures,
+  }
+}

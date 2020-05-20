@@ -21,8 +21,8 @@ export default USER_OPTIONS = {
     {
       id: '4',
       text: 'RCQ',
-      subText: 'Criança, Adulto e Idoso',
-      navigate: 'Main',
+      subText: 'Homem e Mulher',
+      navigate: 'RCQ',
     },
     {
       id: '5',

@@ -1,6 +1,14 @@
-import { ACTIONS } from '../../../constants';
-import { CLASSIFICATION_COLOR, CLASSIFICATION_TEXT } from '../../../constants'
-import { imc, pesoIdeal } from '../../../formulas';
+import {
+  ACTIONS,
+  CLASSIFICATION_COLOR,
+  CLASSIFICATION_TEXT
+} from '../../../constants';
+
+import {
+  imc,
+  pesoIdeal,
+  rcq
+} from '../../../formulas';
 
 const INITIAL_STATE = {
   result: 0,
@@ -77,7 +85,15 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
 
       return {
         ...state,
-        result
+        result,
+      }
+
+    case ACTIONS.SET_RCQ:
+      result = rcq(measures);
+
+      return {
+        ...state,
+        result,
       }
 
     default:

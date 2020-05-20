@@ -37,16 +37,19 @@ const Category = ({ category1, category2, category3 }) => {
         <Text>{category2}</Text>
       </Button>
 
-      <Button
-        elevation={enabledCategory.category3 ? 0 : 4}
-        onPress={() => handleEnabledCategory({
-          category1: false,
-          category2: false,
-          category3: true,
-        })}
-      >
-        <Text>{category3}</Text>
-      </Button>
+      {category3
+        ? <Button
+          elevation={enabledCategory.category3 ? 0 : 4}
+          onPress={() => handleEnabledCategory({
+            category1: false,
+            category2: false,
+            category3: true,
+          })}
+        >
+          <Text>{category3}</Text>
+        </Button>
+        : null
+      }
     </Container>
   );
 }

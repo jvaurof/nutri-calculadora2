@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Main from '../pages/Main';
 import IMC from '../pages/IMC';
 import PesoIdeal from '../pages/PesoIdeal';
+import RCQ from '../pages/RCQ';
 
 const MainStack = createStackNavigator();
 
@@ -36,6 +37,11 @@ const MainRoutes = () => (
       <MainStack.Screen
         name="PesoIdeal"
         component={PesoIdeal}
+      />
+
+      <MainStack.Screen
+        name="RCQ"
+        component={RCQ}
       />
     </MainStack.Navigator>
   </>

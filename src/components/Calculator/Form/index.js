@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { Keyboard } from 'react-native';
 import { useDispatch } from 'react-redux';
 
-import { setImc, setPesoIdeal } from '../../../store/modules/calculator/actions';
+import { setImc, setPesoIdeal, setRcq } from '../../../store/modules/calculator/actions';
 import { CALCULATOR_TYPES } from '../../../constants';
 
 import {
@@ -16,7 +16,13 @@ import {
   SubmitTextButton
 } from './styles';
 
-export default Form = ({ measure1, measure2, type }) => {
+export default Form = ({
+  measure1,
+  measure2,
+  precision1 = 2,
+  precision2 = 2,
+  type
+}) => {
   const [item1, setItem1] = useState('0,00');
   const [item2, setItem2] = useState('0,00');
 
@@ -44,6 +50,10 @@ export default Form = ({ measure1, measure2, type }) => {
       case CALCULATOR_TYPES.PESO_IDEAL:
         dispatch(setPesoIdeal(measures));
         break
+
+      case CALCULATOR_TYPES.RCQ:
+        dispatch(setRcq(measures));
+        break
     }
 
   }, [item1, item2]);
@@ -56,7 +66,7 @@ export default Form = ({ measure1, measure2, type }) => {
           <Input
             type={'money'}
             options={{
-              precision: 2,
+              precision: precision1,
               separator: ',',
               delimiter: '.',
               unit: '',
@@ -74,7 +84,7 @@ export default Form = ({ measure1, measure2, type }) => {
           <Input
             type={'money'}
             options={{
-              precision: 2,
+              precision: precision2,
               separator: ',',
               delimiter: '.',
               unit: '',
