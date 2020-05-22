@@ -2,11 +2,7 @@ import React from 'react'
 import { StatusBar } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Main from '../pages/Main';
-import IMC from '../pages/IMC';
-import PesoIdeal from '../pages/PesoIdeal';
-import RCQ from '../pages/RCQ';
-import AlturaEstimada from '../pages/AlturaEstimada';
+import Pages from '../pages';
 
 const MainStack = createStackNavigator();
 
@@ -27,27 +23,27 @@ const MainRoutes = () => (
     >
       <MainStack.Screen
         name="Main"
-        component={Main}
+        component={Pages.Main}
       />
 
       <MainStack.Screen
         name="IMC"
-        component={IMC}
+        component={Pages.IMC}
       />
 
       <MainStack.Screen
         name="PesoIdeal"
-        component={PesoIdeal}
+        component={Pages.PesoIdeal}
       />
 
       <MainStack.Screen
         name="RCQ"
-        component={RCQ}
+        component={Pages.RCQ}
       />
 
       <MainStack.Screen
         name="AlturaEstimada"
-        component={AlturaEstimada}
+        component={Pages.AlturaEstimada}
       />
     </MainStack.Navigator>
   </>
