@@ -12,12 +12,12 @@ export default USER_OPTIONS = {
       subText: '',
       navigate: 'PesoIdeal',
     },
-    {
+    /*{
       id: '3',
       text: 'Peso Ajustado',
       subText: 'Criança, Adulto e Idoso',
       navigate: 'Main',
-    },
+    },*/
     {
       id: '4',
       text: 'RCQ',
@@ -26,9 +26,9 @@ export default USER_OPTIONS = {
     },
     {
       id: '5',
-      text: 'Peso Corrigido',
-      subText: 'Criança, Adulto e Idoso',
-      navigate: 'Main',
+      text: 'Altura Estimada',
+      subText: 'Homem e Mulher',
+      navigate: 'AlturaEstimada',
     },
     {
       id: '6',

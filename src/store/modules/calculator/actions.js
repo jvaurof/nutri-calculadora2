@@ -33,3 +33,10 @@ export function setRcq(measures) {
     measures,
   }
 }
+
+export function setAlturaEstimada(measures) {
+  return {
+    type: ACTIONS.SET_ALTURA_ESTIMADA,
+    measures,
+  }
+}

@@ -2,7 +2,13 @@ import React, { useState, useRef, useCallback } from 'react';
 import { Keyboard } from 'react-native';
 import { useDispatch } from 'react-redux';
 
-import { setImc, setPesoIdeal, setRcq } from '../../../store/modules/calculator/actions';
+import {
+  setImc,
+  setPesoIdeal,
+  setRcq,
+  setAlturaEstimada,
+} from '../../../store/modules/calculator/actions';
+
 import { CALCULATOR_TYPES } from '../../../constants';
 
 import {
@@ -53,6 +59,10 @@ export default Form = ({
 
       case CALCULATOR_TYPES.RCQ:
         dispatch(setRcq(measures));
+        break
+
+      case CALCULATOR_TYPES.ALTURA_ESTIMADA:
+        dispatch(setAlturaEstimada(measures));
         break
     }
 

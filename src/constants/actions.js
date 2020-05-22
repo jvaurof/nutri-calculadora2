@@ -4,4 +4,5 @@ export default ACTIONS = {
   SET_ENABLED_CATEGORY: '@calculator/SET_ENABLED_CATEGORY',
   SET_PESO_IDEAL: '@calculator/SET_PESO_IDEAL',
   SET_RCQ: '@calculator/SET_RCQ',
+  SET_ALTURA_ESTIMADA: '@calculator/SET_ALTURA_ESTIMADA'
 };

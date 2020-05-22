@@ -6,6 +6,7 @@ import Main from '../pages/Main';
 import IMC from '../pages/IMC';
 import PesoIdeal from '../pages/PesoIdeal';
 import RCQ from '../pages/RCQ';
+import AlturaEstimada from '../pages/AlturaEstimada';
 
 const MainStack = createStackNavigator();
 
@@ -42,6 +43,11 @@ const MainRoutes = () => (
       <MainStack.Screen
         name="RCQ"
         component={RCQ}
+      />
+
+      <MainStack.Screen
+        name="AlturaEstimada"
+        component={AlturaEstimada}
       />
     </MainStack.Navigator>
   </>

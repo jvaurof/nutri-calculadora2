@@ -7,7 +7,8 @@ import {
 import {
   imc,
   pesoIdeal,
-  rcq
+  rcq,
+  alturaEstimada,
 } from '../../../formulas';
 
 const INITIAL_STATE = {
@@ -27,6 +28,9 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
 
   switch (type) {
     case ACTIONS.SET_IMC:
+      let classificationColor;
+      let classificationText;
+
       result = imc(measures);
 
       if (result < 16) {
@@ -53,6 +57,8 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
                   classificationColor = CLASSIFICATION_COLOR.SERIOUS;
                   classificationText = CLASSIFICATION_TEXT.IMC.OBESITY;
                 }
+
+      result = result.toFixed(2).toString().replace(".", ",");
 
       return {
         ...state,
@@ -82,18 +88,31 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
 
     case ACTIONS.SET_PESO_IDEAL:
       result = pesoIdeal(measures);
+      result = result.toFixed(2).toString().replace(".", ",");
+
+      return {
+        ...state,
+        result,
+        classificationText: 'Kg',
+      }
+
+    case ACTIONS.SET_RCQ:
+      result = rcq(measures);
+      result = result.toFixed(2).toString().replace(".", ",");
 
       return {
         ...state,
         result,
       }
 
-    case ACTIONS.SET_RCQ:
-      result = rcq(measures);
+    case ACTIONS.SET_ALTURA_ESTIMADA:
+      result = alturaEstimada(measures, state.enabledCategory);
+      result = result.toFixed(2).toString().replace(".", ",");
 
       return {
         ...state,
         result,
+        classificationText: 'metros',
       }
 
     default:
