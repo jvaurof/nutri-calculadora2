@@ -1,8 +1,8 @@
-import {
-  ACTIONS,
-  CLASSIFICATION_COLOR,
-  CLASSIFICATION_TEXT
-} from '../../../constants';
+import { produce } from 'immer';
+
+import { imcClassification } from '../../../classification';
+
+import { ACTIONS } from '../../../constants';
 
 import {
   imc,
@@ -23,97 +23,73 @@ const INITIAL_STATE = {
 };
 
 export default calculatorReducer = (state = INITIAL_STATE, actions) => {
-  const { type, measures, enabledCategory } = actions;
-  let result;
+  const { type } = actions;
 
   switch (type) {
     case ACTIONS.SET_IMC:
-      let classificationColor;
-      let classificationText;
+      return produce(state, draft => {
+        const { measures } = actions;
+        let result = imc(measures);
 
-      result = imc(measures);
+        const { classificationColor, classificationText } = imcClassification(result);
 
-      if (result < 16) {
-        classificationColor = CLASSIFICATION_COLOR.SERIOUS;
-        classificationText = CLASSIFICATION_TEXT.IMC.SEVERE_MALNUTRITION;
-      } else
-        if (result >= 16 && result < 17) {
-          classificationColor = CLASSIFICATION_COLOR.MODERATE;
-          classificationText = CLASSIFICATION_TEXT.IMC.MILD_MALNUTRITION;
-        } else
-          if (result >= 17 && result < 18.6) {
-            classificationColor = CLASSIFICATION_COLOR.LIGHT;
-            classificationText = CLASSIFICATION_TEXT.IMC.MILD_MALNUTRITION;
-          } else
-            if (result >= 18.6 && result < 25) {
-              classificationColor = CLASSIFICATION_COLOR.OK;
-              classificationText = CLASSIFICATION_TEXT.IMC.EUTROPHY;
-            } else
-              if (result >= 25 && result < 30) {
-                classificationColor = CLASSIFICATION_COLOR.MODERATE;
-                classificationText = CLASSIFICATION_TEXT.IMC.OVERWEIGHT;
-              } else
-                if (result >= 30) {
-                  classificationColor = CLASSIFICATION_COLOR.SERIOUS;
-                  classificationText = CLASSIFICATION_TEXT.IMC.OBESITY;
-                }
+        result = result.toFixed(2).toString().replace(".", ",");
 
-      result = result.toFixed(2).toString().replace(".", ",");
-
-      return {
-        ...state,
-        result: result,
-        classificationColor,
-        classificationText,
-      }
+        draft.result = result;
+        draft.classificationColor = classificationColor;
+        draft.classificationText = classificationText;
+      });
 
     case ACTIONS.CLEAR_RESULT:
-      return {
-        ...state,
-        result: 0,
-        classificationColor: '#fff',
-        classificationText: '',
-        enabledCategory: {
+      return produce(state, draft => {
+        draft.result = 0;
+        draft.classificationColor = '#fff';
+        draft.classificationText = '';
+        draft.enabledCategory = {
           category1: false,
           category2: true,
           category3: false,
         }
-      }
+      });
 
     case ACTIONS.SET_ENABLED_CATEGORY:
-      return {
-        ...state,
-        enabledCategory,
-      }
+      return produce(state, draft => {
+        const { enabledCategory } = actions;
+
+        draft.enabledCategory = enabledCategory;
+      });
 
     case ACTIONS.SET_PESO_IDEAL:
-      result = pesoIdeal(measures);
-      result = result.toFixed(2).toString().replace(".", ",");
+      return produce(state, draft => {
+        const { measures } = actions;
 
-      return {
-        ...state,
-        result,
-        classificationText: 'Kg',
-      }
+        let result = pesoIdeal(measures);
+        result = result.toFixed(2).toString().replace(".", ",");
+
+        draft.result = result;
+        draft.classificationText = 'Kg';
+      });
 
     case ACTIONS.SET_RCQ:
-      result = rcq(measures);
-      result = result.toFixed(2).toString().replace(".", ",");
+      return produce(state, draft => {
+        const { measures } = actions;
 
-      return {
-        ...state,
-        result,
-      }
+        let result = rcq(measures);
+        result = result.toFixed(2).toString().replace(".", ",");
+
+        draft.result = result;
+      });
 
     case ACTIONS.SET_ALTURA_ESTIMADA:
-      result = alturaEstimada(measures, state.enabledCategory);
-      result = result.toFixed(2).toString().replace(".", ",");
+      return produce(state, draft => {
+        const { measures } = actions;
 
-      return {
-        ...state,
-        result,
-        classificationText: 'metros',
-      }
+        let result = alturaEstimada(measures, state.enabledCategory);
+        result = result.toFixed(2).toString().replace(".", ",");
+
+        draft.result = result;
+        draft.classificationText = 'metros';
+      });
 
     default:
       return state;
