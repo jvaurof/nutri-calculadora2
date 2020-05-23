@@ -4,12 +4,7 @@ import { imcClassification } from '../../../classification';
 
 import { ACTIONS } from '../../../constants';
 
-import {
-  imc,
-  pesoIdeal,
-  rcq,
-  alturaEstimada,
-} from '../../../formulas';
+import * as Formulas from '../../../formulas';
 
 const INITIAL_STATE = {
   result: 0,
@@ -29,7 +24,7 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
     case ACTIONS.SET_IMC:
       return produce(state, draft => {
         const { measures } = actions;
-        let result = imc(measures);
+        let result = Formulas.imc(measures);
 
         const { classificationColor, classificationText } = imcClassification(result);
 
@@ -63,7 +58,7 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
       return produce(state, draft => {
         const { measures } = actions;
 
-        let result = pesoIdeal(measures);
+        let result = Formulas.pesoIdeal(measures);
         result = result.toFixed(2).toString().replace(".", ",");
 
         draft.result = result;
@@ -74,7 +69,7 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
       return produce(state, draft => {
         const { measures } = actions;
 
-        let result = rcq(measures);
+        let result = Formulas.rcq(measures);
         result = result.toFixed(2).toString().replace(".", ",");
 
         draft.result = result;
@@ -84,14 +79,26 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
       return produce(state, draft => {
         const { measures } = actions;
 
-        let result = alturaEstimada(measures, state.enabledCategory);
+        let result = Formulas.alturaEstimada(measures, state.enabledCategory);
         result = result.toFixed(2).toString().replace(".", ",");
 
         draft.result = result;
         draft.classificationText = 'metros';
       });
 
+    case ACTIONS.SET_ADEQUACAO_DE_PESO:
+      return produce(state, draft => {
+        const { measures } = actions;
+
+        let result = Formulas.adequacaoDePeso(measures);
+        result = result.toFixed(2).toString().replace(".", ",");
+
+        draft.result = result;
+        draft.classificationText = '%';
+      });
+
     default:
       return state;
   }
 };
+

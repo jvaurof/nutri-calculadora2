@@ -12,12 +12,12 @@ export default USER_OPTIONS = {
       subText: '',
       navigate: 'PesoIdeal',
     },
-    /*{
+    {
       id: '3',
-      text: 'Peso Ajustado',
-      subText: 'Criança, Adulto e Idoso',
-      navigate: 'Main',
-    },*/
+      text: 'Adequação de Peso',
+      subText: '',
+      navigate: 'AdequacaoDePeso',
+    },
     {
       id: '4',
       text: 'RCQ',

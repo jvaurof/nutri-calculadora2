@@ -45,6 +45,11 @@ const MainRoutes = () => (
         name="AlturaEstimada"
         component={Pages.AlturaEstimada}
       />
+
+      <MainStack.Screen
+        name="AdequacaoDePeso"
+        component={Pages.AdequacaoDePeso}
+      />
     </MainStack.Navigator>
   </>
 )

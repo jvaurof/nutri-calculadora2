@@ -19,7 +19,9 @@ export default Result = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(clearResult());
+    return () => {
+      dispatch(clearResult());
+    }
   }, [])
 
   return (

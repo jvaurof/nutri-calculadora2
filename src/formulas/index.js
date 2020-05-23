@@ -1,31 +1,22 @@
 export function imc({ item1: weight, item2: height }) {
-  const result = weight / Math.pow(height, 2);
-  return result;
+  return weight / Math.pow(height, 2);
 }
 
 export function pesoIdeal({ item1: intendedImc, item2: height }) {
-  const result = intendedImc * Math.pow(height, 2);
-  return result;
+  return intendedImc * Math.pow(height, 2);
 }
 
 export function rcq({ item1: waist, item2: hip }) {
-  const result = waist / hip;
-  return result;
+  return waist / hip;
 }
 
-export function alturaEstimada(
-  { item1: age,
-    item2: kneeHeight,
-  },
-  {
-    category1: man,
-  }) {
-  let result;
-
+export function alturaEstimada({ item1: age, item2: kneeHeight }, { category1: man }) {
   if (man)
-    result = (64.19 - (0.04 * age) + (2.02 * kneeHeight)) / 100;
+    return (64.19 - (0.04 * age) + (2.02 * kneeHeight)) / 100;
   else
-    result = (84.88 - (0.24 * age) + (1.83 * kneeHeight)) / 100;
+    return (84.88 - (0.24 * age) + (1.83 * kneeHeight)) / 100;
+}
 
-  return result;
+export function adequacaoDePeso({ item1: currentWeight, item2: idealWeight }) {
+  return currentWeight / idealWeight * 100;
 }
