@@ -23,6 +23,10 @@ export function calculator(measures, calculatorType) {
     case CALCULATOR_TYPES.ADEQUACAO_DE_PESO:
       type = ACTIONS.SET_ADEQUACAO_DE_PESO;
       break
+
+    case CALCULATOR_TYPES.MUDANCA_DO_PESO:
+      type = ACTIONS.SET_MUDANCA_DO_PEDO;
+      break
   }
 
   return {

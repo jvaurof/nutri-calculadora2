@@ -4,4 +4,5 @@ export default CALCULATOR_TYPES = {
   RCQ: 'rcq',
   ALTURA_ESTIMADA: 'alturaEstimada',
   ADEQUACAO_DE_PESO: 'adequacaoDePeso',
+  MUDANCA_DO_PESO: 'mudancaDoPeso',
 };

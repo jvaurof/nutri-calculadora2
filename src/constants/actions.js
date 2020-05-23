@@ -6,4 +6,5 @@ export default ACTIONS = {
   SET_RCQ: '@calculator/SET_RCQ',
   SET_ALTURA_ESTIMADA: '@calculator/SET_ALTURA_ESTIMADA',
   SET_ADEQUACAO_DE_PESO: '@calculator/SET_ADEQUACAO_DE_PESO',
+  SET_MUDANCA_DO_PEDO: '@calculator/SET_MUDANCA_DO_PEDO',
 };

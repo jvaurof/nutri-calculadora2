@@ -97,6 +97,17 @@ export default calculatorReducer = (state = INITIAL_STATE, actions) => {
         draft.classificationText = '%';
       });
 
+    case ACTIONS.SET_MUDANCA_DO_PEDO:
+      return produce(state, draft => {
+        const { measures } = actions;
+
+        let result = Formulas.mudancaDoPeso(measures);
+        result = result.toFixed(2).toString().replace(".", ",");
+
+        draft.result = result;
+        draft.classificationText = '%';
+      });
+
     default:
       return state;
   }

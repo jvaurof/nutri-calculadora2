@@ -32,9 +32,9 @@ export default USER_OPTIONS = {
     },
     {
       id: '6',
-      text: 'Peso Corrigido',
-      subText: 'Criança, Adulto e Idoso',
-      navigate: 'Main',
+      text: 'Mudança do Peso',
+      subText: '',
+      navigate: 'MudancaDoPeso',
     },
     {
       id: '7',

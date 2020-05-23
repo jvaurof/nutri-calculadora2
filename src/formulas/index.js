@@ -20,3 +20,7 @@ export function alturaEstimada({ item1: age, item2: kneeHeight }, { category1: m
 export function adequacaoDePeso({ item1: currentWeight, item2: idealWeight }) {
   return currentWeight / idealWeight * 100;
 }
+
+export function mudancaDoPeso({ item1: usualWeight, item2: currentWeight }) {
+  return (usualWeight - currentWeight) * 100 / usualWeight;
+}

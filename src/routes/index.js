@@ -50,6 +50,11 @@ const MainRoutes = () => (
         name="AdequacaoDePeso"
         component={Pages.AdequacaoDePeso}
       />
+
+      <MainStack.Screen
+        name="MudancaDoPeso"
+        component={Pages.MudancaDoPeso}
+      />
     </MainStack.Navigator>
   </>
 )

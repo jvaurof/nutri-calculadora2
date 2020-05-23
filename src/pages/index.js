@@ -4,6 +4,7 @@ import PesoIdeal from './PesoIdeal';
 import RCQ from './RCQ';
 import AlturaEstimada from './AlturaEstimada';
 import AdequacaoDePeso from './AdequacaoDePeso';
+import MudancaDoPeso from './MudancaDoPeso';
 
 export default {
   Main,
@@ -12,4 +13,5 @@ export default {
   RCQ,
   AlturaEstimada,
   AdequacaoDePeso,
+  MudancaDoPeso,
 }
